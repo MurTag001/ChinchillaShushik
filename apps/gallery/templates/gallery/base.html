@@ -1,0 +1,31 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block page_title %}ChinchillaShushik{% endblock page_title %}</title>
+  <link rel="icon" href="{% static 'images/favicon.png' %}">
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% block styles %}{% endblock styles %}
+  {% bootstrap_javascript %}
+  <script src="{% static 'js/base.js' %}" type="module" defer></script>
+</head>
+
+<body>
+
+  {% include "gallery/includes/header.html" %}
+
+  <main>
+    {% block page_content %}{% endblock page_content %}
+  </main>
+
+
+  {% include "gallery/includes/footer.html" %}
+</body>
+
+</html>

@@ -10,11 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+sys.path.insert(0, str(BASE_DIR / 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -39,12 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Установленные
+    'django_bootstrap5',
+    'django_bootstrap_icons',
     'django_extensions',
     'imagekit',
     'taggit',
     
     # Собственные
     'gallery',
+    'users',
 
 ]
 
@@ -83,8 +88,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'shushik_db',
+        'USER': 'shushik',
+        'PASSWORD': '1010011010',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -124,6 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static/']
 
 
 # Email
